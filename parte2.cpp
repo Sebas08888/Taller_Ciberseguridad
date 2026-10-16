@@ -30,8 +30,8 @@ int main() {
         }
     }
 
-    if (!acceso){
-        cout << "CUENTA BLOQUEADA" << endl;
+    if (!acceso) {
+        cout << "Se han agotado los intentos" << endl;
     }
 
     return 0;

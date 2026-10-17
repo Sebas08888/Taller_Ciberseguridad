@@ -1,62 +1,30 @@
-SecurePass Analyzer
-SecurePass Analyzer es una aplicación de consola desarrollada en C++17 para evaluar la seguridad básica de contraseñas mediante un sistema de puntuación.
+# Validador de Contraseñas Seguras 
 
-El proyecto tiene un enfoque educativo y está organizado en módulos para facilitar su mantenimiento, compilación y ampliación.
+Este proyecto es una aplicación desarrollada en **C++** como parte de un taller de ciberseguridad. Su función principal es analizar la solidez de una contraseña introducida por el usuario, evaluando múltiples criterios de seguridad informática mediante un sistema de puntaje y un entorno interactivo en consola.
 
-Características
-Análisis de contraseñas en tiempo de ejecución.
-Evaluación de cuatro criterios de seguridad.
-Puntuación automática de 0 a 4.
-Clasificación en niveles de seguridad.
-Dataset de ejemplos en formato CSV.
-Pruebas automatizadas con CTest.
-Compilación multiplataforma mediante CMake.
-Reglas de evaluación
+---
 
-Regla	Condición
-Longitud	Al menos 8 caracteres
-Mayúsculas	Al menos una letra A-Z
-Números	Al menos un dígito 0-9
-Símbolos	Al menos uno de !, @, #, $, %, & o *
-Clasificación
-0-2 puntos: DÉBIL.
-3 puntos: MEDIA.
-4 puntos: FUERTE.
-Cada criterio aporta un punto si se cumple.
+##  Reglas de Evaluación
 
-Estructura
-src/: implementación y aplicación principal.
-include/: interfaz de la clase analizadora.
-dataset/: ejemplos ficticios con resultados esperados.
-tests/: pruebas automáticas.
-CMakeLists.txt: configuración del proyecto.
-Requisitos
-Compilador compatible con C++17.
-CMake 3.16 o superior.
-Compilación
-Desde la raíz del repositorio:
+El programa verifica si la contraseña cumple con **4 reglas fundamentales**:
 
+1. **Longitud mínima:** Debe contener al menos 8 caracteres.
 
-cmake -S . -B build
-cmake --build build
-Ejecución
-En Linux o macOS:
+2. **Letras mayúsculas:** Debe incluir al menos una letra mayúscula (`A-Z`).
 
+3. **Números:** Debe incluir al menos un dígito numérico (`0-9`).
 
-./build/securepass
-En Windows, con una configuración de CMake que genere ejecutables en el directorio build:
+4. **Caracteres especiales:** Debe contener al menos uno de los siguientes símbolos permitidos: `!`, `@`, `#`, `$`, `%`, `&`, `*`.
 
+---
 
-.\build\Debug\securepass.exe
-La ubicación exacta del ejecutable depende del generador utilizado.
+##  Niveles de Seguridad
 
-Ejecutar pruebas
+Dependiendo del número de reglas que cumpla la contraseña (calculado de forma automática mediante un puntaje del 0 al 4), el sistema clasifica el resultado en:
 
-ctest --test-dir build --output-on-failure
-Limitaciones
-Esta aplicación evalúa únicamente cuatro características básicas. Una contraseña clasificada como fuerte según estas reglas no necesariamente es segura frente a ataques reales. El programa no comprueba si una contraseña ha sido filtrada, si es predecible o si se reutiliza en otros servicios.
+* **0 a 2 reglas cumplidas:** `DÉBIL` 
 
-No se recomienda introducir contraseñas personales o de producción en una herramienta educativa.
+* **3 reglas cumplidas:** `MEDIA` 
 
-Licencia
-Este proyecto puede publicarse con una licencia de código abierto, como MIT, si el autor decide adoptar sus términos.
+* **4 reglas cumplidas:** `FUERTE` 
+ 
